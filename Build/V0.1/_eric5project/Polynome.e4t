@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Tasks SYSTEM "Tasks-5.1.dtd">
+<!-- eric5 tasks file for project Polynome -->
+<!-- Saved: 2014-10-05, 23:16:20 -->
+<Tasks version="5.1">
+  <ProjectScanFilter></ProjectScanFilter>
+  <Task priority="1" completed="False" type="1">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2014-09-23, 23:45:08</Created>
+    <Resource>
+      <Filename>GUI/connexion2.py</Filename>
+      <Linenumber>56</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2014-10-05, 23:03:16</Created>
+    <Resource>
+      <Filename>GUI/polynome.py</Filename>
+      <Linenumber>81</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2014-10-05, 23:03:16</Created>
+    <Resource>
+      <Filename>GUI/polynome.py</Filename>
+      <Linenumber>535</Linenumber>
+    </Resource>
+  </Task>
+</Tasks>
