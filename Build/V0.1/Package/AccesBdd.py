@@ -152,13 +152,14 @@ class AccesBdd():
         
         table = Table("POLYNOME_CORRECTION", self.meta)
         ins = table.insert()
+#        print(table.ID_POLYNOME)
         self.connection.execute(ins, donnees)
         
+    def insert_polynome_table_etalonnage(self,  donnees):
+        '''fct qui insert le poly dans la base '''
         
-
-    def insertion_table(self, table_nom, donnees):
-        '''fct qui insere dans la table_nom'''
-        table = Table(table_nom, self.meta)
+        table = Table("POLYNOME_TABLE_ETALONNAGE", self.meta)
         ins = table.insert()
-        result = self.connection.execute(ins, donnees)
-        return result
+        self.connection.execute(ins, donnees)
+
+

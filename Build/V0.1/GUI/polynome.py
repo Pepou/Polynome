@@ -477,7 +477,7 @@ class Polynome(QMainWindow, Ui_Polynome):
                 self.tableWidget_table_etalonnage.removeRow(0)
                 
         nbr_ligne_tableau_poly= int(self.tableWidget_polynome.rowCount())
-        if nbr_ligne_tableau_poly !=1: #☺reste une ligne juste nettoyer les cases
+        if nbr_ligne_tableau_poly !=1: #:reste une ligne juste nettoyer les cases
             for i in range(nbr_ligne_tableau_poly):
                 self.tableWidget_polynome.removeRow(0)
         else:
@@ -550,19 +550,15 @@ class Polynome(QMainWindow, Ui_Polynome):
         if etat_polynome =="Archivé":
             booleen = True
         else:
-            booleen = False
-        
+            booleen = False        
        
         nbr_poly = self.tableWidget_polynome.rowCount()        
-        ordre = int(self.tableWidget_polynome.item(nbr_poly-1,0 ).text())
-        
+        ordre = int(self.tableWidget_polynome.item(nbr_poly-1,0 ).text())        
           
         if ordre > 1:
             a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text())
             b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text())
             c = float(self.tableWidget_polynome.item(nbr_poly-1,3 ).text())
-            
-
                 
         else:
             a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text())
@@ -586,7 +582,7 @@ class Polynome(QMainWindow, Ui_Polynome):
     def on_actionEnregistrer_triggered(self):
        
         """
-                 fct qui fait l'enregistrement dans la bdd        """
+        fct qui fait l'enregistrement dans la bdd        """
             
         identification = self.comboBox_identification.currentText()
         n_ce = self.comboBox_n_ce.currentText()
@@ -599,32 +595,44 @@ class Polynome(QMainWindow, Ui_Polynome):
         
        
         nbr_poly = self.tableWidget_polynome.rowCount()        
-        ordre = int(self.tableWidget_polynome.item(nbr_poly-1,0 ).text())
-        
+        ordre = int(self.tableWidget_polynome.item(nbr_poly-1,0 ).text())        
           
         if ordre > 1:
             a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text())
             b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text())
-            c = float(self.tableWidget_polynome.item(nbr_poly-1,3 ).text())
-            
-
-                
+            c = float(self.tableWidget_polynome.item(nbr_poly-1,3 ).text())                
         else:
             a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text())
             b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text())
             c = 0
 
         date = self.dateEdit.date()
-        date_etal = date.toString('yyyy-MM-dd')
-        
-        creation_poly = datetime.today().strftime('%d-%m-%y')
-        
+        date_etal = date.toString('yyyy-MM-dd')        
+        creation_poly = datetime.today().strftime('%d-%m-%y')        
         
         valeurs_saisie = { "DATE_ETAL": date_etal, "ARCHIVAGE": booleen, "ORDRE_POLY": ordre, "COEFF_A": a, 
                                     "COEFF_B": b, "COEFF_C": c, "DATE_CREATION_POLY": creation_poly, 
                                     "IDENTIFICATION": identification, "NUM_CERTIFICAT": n_ce}
         
         self.db.insert_table_polynome(valeurs_saisie)
+        
+        
+        #recuperation des donnees tableau etalonnage  :
+        nbr_ligne_tableau_etal = self.tableWidget_table_etalonnage.rowCount
+        saisie_tableau_etal = [] 
+        ligne_saisie ={}
+        for i in range (nbr_ligne_tableau_etal):
+            ligne_saisie["ordre_apparition"] = self.tableWidget_table_etalonnage.item(i-1, 0).text()
+            ligne_saisie["valeur_etalon_corrigée"] = self.tableWidget_table_etalonnage.item(i-1, 1).text()
+            ligne_saisie["valeur_instrument"] = self.tableWidget_table_etalonnage.item(i-1, 2).text()
+            ligne_saisie["correction"] = self.tableWidget_table_etalonnage.item(i-1, 3).text()
+            ligne_saisie["erreur"] = self.tableWidget_table_etalonnage.item(i-1, 4).text()
+            ligne_saisie["incertitude"] = self.tableWidget_table_etalonnage.item(i-1, 5).text()
+            
+            saisie_tableau_etal.append(ligne_saisie)
+
+
+        
         self.clear_all()
         self.comboBox_n_ce.clear()
         self.comboBox_identification.clear()
