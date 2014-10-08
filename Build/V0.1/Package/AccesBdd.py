@@ -64,7 +64,7 @@ class AccesBdd():
     def renvoie_caracteristique_poly_n_ce(self, n_ce):
         '''retourne les caracteristique polynome en fct n°CE'''
             
-        result = self.connection.execute('''SELECT "DATE_ETAL","ORDRE_POLY","COEFF_A","COEFF_B","COEFF_C","ARCHIVAGE" FROM "POLYNOME_CORRECTION" WHERE "NUM_CERTIFICAT" = '{}' '''.format(n_ce))
+        result = self.connection.execute('''SELECT "DATE_ETAL","ORDRE_POLY","COEFF_A","COEFF_B","COEFF_C","ARCHIVAGE","ID_POLYNOME" FROM "POLYNOME_CORRECTION" WHERE "NUM_CERTIFICAT" = '{}' '''.format(n_ce))
     
                
         for ele in result: 
@@ -164,6 +164,18 @@ class AccesBdd():
 
         table = Table("POLYNOME_TABLE_ETALONNAGE", self.meta)
         ins = table.insert()
-        result = self.connection.execute(ins, donnees)
+        self.connection.execute(ins, donnees)
 
 
+    def recuperation_donnees_table_polynome_table_etalonnage(self, id_poly):
+        '''fct pour recuperer les donnnees dans la table polynome-table-etal'''
+        
+        table = Table("POLYNOME_TABLE_ETALONNAGE", self.meta)
+        ins = select([table.c.MOYENNE_ETALON_CORRI, table.c.MOYENNE_INSTRUM, table.c.CORRECTION, table.c.INCERTITUDE]).where(table.c.ID_POLYNOME == id_poly).order_by(table.c.ID_POLY_TABLE_ETAL)
+        result = self.connection.execute(ins)
+        
+        donnees_poly_table_etal = []        
+        for ele in result:   
+            donnees_poly_table_etal.append(ele) 
+        
+        return donnees_poly_table_etal

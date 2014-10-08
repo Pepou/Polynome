@@ -162,8 +162,12 @@ class Polynome(QMainWindow, Ui_Polynome):
         
         
         #Donnees d'etalonnage
+        donnee_table_poly = self.db.recuperation_donnees_table_polynome_table_etalonnage(caract_poly[6])
         
-        donnees_etal = self.db.recuperation_donnees_etalonnage_n_ce(n_ce)
+        if donnee_table_poly == None:
+            donnees_etal = self.db.recuperation_donnees_etalonnage_n_ce(n_ce)
+        else:
+            donnees_etal = donnee_table_poly
         
         #nettoyage tableaux donnees
         nbr_ligne = int(self.tableWidget_table_etalonnage.rowCount())
