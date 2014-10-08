@@ -54,7 +54,7 @@ class AccesBdd():
     def resencement_ce_ident_instrument_table_polynome_correction(self, ident_instrum):
         '''retourne tous les n °ce d'un instrument dans une list'''
             
-        result = self.connection.execute('''SELECT "NUM_CERTIFICAT" FROM "POLYNOME_CORRECTION" WHERE "IDENTIFICATION" = '{}' '''.format(ident_instrum))
+        result = self.connection.execute('''SELECT "NUM_CERTIFICAT" FROM "POLYNOME_CORRECTION" WHERE "IDENTIFICATION" = '{}' ORDER BY "ID_POLYNOME"'''.format(ident_instrum))
         
         ce = []        
         for ele in result:            
