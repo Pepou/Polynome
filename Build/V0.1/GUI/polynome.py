@@ -614,23 +614,25 @@ class Polynome(QMainWindow, Ui_Polynome):
                                     "COEFF_B": b, "COEFF_C": c, "DATE_CREATION_POLY": creation_poly, 
                                     "IDENTIFICATION": identification, "NUM_CERTIFICAT": n_ce}
         
-        self.db.insert_table_polynome(valeurs_saisie)
-        
+        id_inserre = self.db.insert_table_polynome(valeurs_saisie)
         
         #recuperation des donnees tableau etalonnage  :
-        nbr_ligne_tableau_etal = self.tableWidget_table_etalonnage.rowCount
+        nbr_ligne_tableau_etal = int(self.tableWidget_table_etalonnage.rowCount())
         saisie_tableau_etal = [] 
-        ligne_saisie ={}
+        
         for i in range (nbr_ligne_tableau_etal):
-            ligne_saisie["ordre_apparition"] = self.tableWidget_table_etalonnage.item(i-1, 0).text()
-            ligne_saisie["valeur_etalon_corrigée"] = self.tableWidget_table_etalonnage.item(i-1, 1).text()
-            ligne_saisie["valeur_instrument"] = self.tableWidget_table_etalonnage.item(i-1, 2).text()
-            ligne_saisie["correction"] = self.tableWidget_table_etalonnage.item(i-1, 3).text()
-            ligne_saisie["erreur"] = self.tableWidget_table_etalonnage.item(i-1, 4).text()
-            ligne_saisie["incertitude"] = self.tableWidget_table_etalonnage.item(i-1, 5).text()
-            
+            ligne_saisie = {}
+
+            ligne_saisie["ORDRE_APPARITION"] = self.tableWidget_table_etalonnage.item(i, 0).text()
+            ligne_saisie["MOYENNE_ETALON_CORRI"] = self.tableWidget_table_etalonnage.item(i, 1).text()
+            ligne_saisie["MOYENNE_INSTRUM"] = self.tableWidget_table_etalonnage.item(i, 2).text()
+            ligne_saisie["CORRECTION"] = self.tableWidget_table_etalonnage.item(i, 3).text()
+            ligne_saisie["ERREUR"] = self.tableWidget_table_etalonnage.item(i, 4).text()
+            ligne_saisie["INCERTITUDE"] = self.tableWidget_table_etalonnage.item(i, 5).text()
+            ligne_saisie["ID_POLYNOME"] = id_inserre[0]
             saisie_tableau_etal.append(ligne_saisie)
 
+        self.db.insert_polynome_table_etalonnage(saisie_tableau_etal)
 
         
         self.clear_all()
