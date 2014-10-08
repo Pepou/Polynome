@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\Pepou\Desktop\Dev informatique Labo\Polynome\Build\V0.1\GUI\polynome.ui'
+# Form implementation generated from reading ui file 'C:\Travail\EFS\Travail accreditation\SQ\Developpement Informatique\Polynome\Build\V0.1\GUI\polynome.ui'
 #
-# Created: Fri Oct  3 22:02:34 2014
-#      by: PyQt4 UI code generator 4.11.2
+# Created: Wed Oct  8 17:58:19 2014
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -456,7 +456,7 @@ class Ui_Polynome(object):
         item.setText(_translate("Polynome", "B", None))
         item = self.tableWidget_polynome.horizontalHeaderItem(3)
         item.setText(_translate("Polynome", "C", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_1), _translate("Polynome", "Menu", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_1), _translate("Polynome", "Saisie", None))
         item = self.tableWidget_modelisation.horizontalHeaderItem(0)
         item.setText(_translate("Polynome", "Ordre d\'apparition certificat", None))
         item = self.tableWidget_modelisation.horizontalHeaderItem(1)
@@ -479,7 +479,7 @@ class Ui_Polynome(object):
         self.label_4.setText(_translate("Polynome", "Ecart type des residus", None))
         self.label_8.setText(_translate("Polynome", "Normalite des residus", None))
         self.label_17.setText(_translate("Polynome", "Incertitude modelisation", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Polynome", "Saisie", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Polynome", "Analyse", None))
         self.menuEnregistrer.setTitle(_translate("Polynome", "Sauvegarder", None))
         self.menuEdition.setTitle(_translate("Polynome", "Edition", None))
         self.actionEnregistrer.setText(_translate("Polynome", "Enregistrer", None))

@@ -164,7 +164,8 @@ class Polynome(QMainWindow, Ui_Polynome):
         #Donnees d'etalonnage
         donnee_table_poly = self.db.recuperation_donnees_table_polynome_table_etalonnage(caract_poly[6])
         
-        if donnee_table_poly == None:
+        
+        if not donnee_table_poly: #(signifie vide)
             donnees_etal = self.db.recuperation_donnees_etalonnage_n_ce(n_ce)
         else:
             donnees_etal = donnee_table_poly
@@ -576,6 +577,56 @@ class Polynome(QMainWindow, Ui_Polynome):
         "DATE_ETAL":date_etal, "ARCHIVAGE": booleen, "ORDRE_POLY": ordre, "COEFF_A":a, "COEFF_B":b, "COEFF_C":c}
 
         self.db. update_table_polynome(identification,  n_ce, valeurs_saisie)
+        
+        "mise à jour s'il y a lieu table polynome_table etal"
+        
+        n_ce = self.comboBox_n_ce.currentText()
+        caract_poly = self.db.renvoie_caracteristique_poly_n_ce(n_ce)
+        id_poly = caract_poly[6] #caract_poly[6] id_poly
+        
+        #Donnees d'etalonnage
+        donnee_table_poly = self.db.recuperation_donnees_table_polynome_table_etalonnage(id_poly) #caract_poly[6] id_poly
+        
+        if donnee_table_poly:            
+            self.db.delete_table_polynome_table_etalonnage(id_poly)
+            
+            #recuperation des donnees tableau etalonnage  :
+            nbr_ligne_tableau_etal = int(self.tableWidget_table_etalonnage.rowCount())
+            saisie_tableau_etal = [] 
+        
+            for i in range (nbr_ligne_tableau_etal):
+                ligne_saisie = {}
+    
+                ligne_saisie["ORDRE_APPARITION"] = self.tableWidget_table_etalonnage.item(i, 0).text()
+                ligne_saisie["MOYENNE_ETALON_CORRI"] = self.tableWidget_table_etalonnage.item(i, 1).text()
+                ligne_saisie["MOYENNE_INSTRUM"] = self.tableWidget_table_etalonnage.item(i, 2).text()
+                ligne_saisie["CORRECTION"] = self.tableWidget_table_etalonnage.item(i, 3).text()
+                ligne_saisie["ERREUR"] = self.tableWidget_table_etalonnage.item(i, 4).text()
+                ligne_saisie["INCERTITUDE"] = self.tableWidget_table_etalonnage.item(i, 5).text()
+                ligne_saisie["ID_POLYNOME"] = id_poly
+                saisie_tableau_etal.append(ligne_saisie)
+
+            self.db.insert_polynome_table_etalonnage(saisie_tableau_etal)
+
+        else:
+                        #recuperation des donnees tableau etalonnage  :
+            nbr_ligne_tableau_etal = int(self.tableWidget_table_etalonnage.rowCount())
+            saisie_tableau_etal = [] 
+        
+            for i in range (nbr_ligne_tableau_etal):
+                ligne_saisie = {}
+    
+                ligne_saisie["ORDRE_APPARITION"] = self.tableWidget_table_etalonnage.item(i, 0).text()
+                ligne_saisie["MOYENNE_ETALON_CORRI"] = self.tableWidget_table_etalonnage.item(i, 1).text()
+                ligne_saisie["MOYENNE_INSTRUM"] = self.tableWidget_table_etalonnage.item(i, 2).text()
+                ligne_saisie["CORRECTION"] = self.tableWidget_table_etalonnage.item(i, 3).text()
+                ligne_saisie["ERREUR"] = self.tableWidget_table_etalonnage.item(i, 4).text()
+                ligne_saisie["INCERTITUDE"] = self.tableWidget_table_etalonnage.item(i, 5).text()
+                ligne_saisie["ID_POLYNOME"] = id_poly
+                saisie_tableau_etal.append(ligne_saisie)
+
+            self.db.insert_polynome_table_etalonnage(saisie_tableau_etal)
+        
         
         self.clear_all()
         self.comboBox_n_ce.clear()

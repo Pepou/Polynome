@@ -179,3 +179,10 @@ class AccesBdd():
             donnees_poly_table_etal.append(ele) 
         
         return donnees_poly_table_etal
+        
+    def delete_table_polynome_table_etalonnage(self, id_poly):
+        '''efface les lignes de la table polynome_donnees_etal'''
+        table = Table("POLYNOME_TABLE_ETALONNAGE", self.meta)
+        ins = table.delete(table.c.ID_POLYNOME == id_poly)
+        self.connection.execute(ins)
+        
