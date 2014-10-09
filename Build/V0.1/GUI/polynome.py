@@ -130,13 +130,11 @@ class Polynome(QMainWindow, Ui_Polynome):
             #n°serie
         self.textEdit_n_serie.append(caracteristique_instrument[2])
             #REFERENCE_CONSTRUCTEUR
-        self.textEdit_model.append(caracteristique_instrument[1])
-            
+        self.textEdit_model.append(caracteristique_instrument[1])            
         
         
         
         if self.radioButton_modification.isChecked():            
-            
             #gestion combobox
             list_n_ce = self.db.resencement_ce_ident_instrument_table_polynome_correction(ident_instrument)
             self.comboBox_n_ce.addItems(list_n_ce)
@@ -186,7 +184,7 @@ class Polynome(QMainWindow, Ui_Polynome):
         #nettoyage graph
         self.clear_plot()
         
-        #Incertions des donnes dans le tableau (donnees)
+        #Insertions des donnes dans le tableau (donnees)
         i=0
         for ele in donnees_etal:            
             self.tableWidget_table_etalonnage.insertRow(i)
@@ -297,11 +295,7 @@ class Polynome(QMainWindow, Ui_Polynome):
             
             return poly
             
-#            if len(donnees_etal) != 0: #permet de pas avoir d'erreur s'il n'y a pas de donnee dans la table etal
-#            self.courbe_polynome()
-#            self.gestion_tableWidget_modelisation()
-#        else:
-#            pass
+
     def courbe_polynome(self):
         '''fct qui trace la courbe y = f(x) avec x et y des lists'''
 
@@ -310,8 +304,8 @@ class Polynome(QMainWindow, Ui_Polynome):
         list_Tlue = []
         list_correction = [] 
         for i in range(nbr_ligne):
-            list_Tlue.append(float(self.tableWidget_table_etalonnage.item(i, 2).text()))
-            list_correction.append(float(self.tableWidget_table_etalonnage.item(i, 3).text()))
+            list_Tlue.append(float(self.tableWidget_table_etalonnage.item(i, 2).text().replace(",", ".")))
+            list_correction.append(float(self.tableWidget_table_etalonnage.item(i, 3).text().replace(",", ".")))
      
 
         self.x_array = np.array(list_Tlue)
@@ -335,15 +329,15 @@ class Polynome(QMainWindow, Ui_Polynome):
         
         list_y_modelise = []
         if ordre > 1:
-            a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text())
-            b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text())
-            c = float(self.tableWidget_polynome.item(nbr_poly-1,3 ).text())
+            a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text().replace(",", "."))
+            b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text().replace(",", "."))
+            c = float(self.tableWidget_polynome.item(nbr_poly-1,3 ).text().replace(",", "."))
             self.x_array.sort()
             for ele in self.x_array:
                 list_y_modelise.append(a*ele*ele + b*ele + c)
         else:
-            a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text())
-            b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text())
+            a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text().replace(",", "."))
+            b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text().replace(",", "."))
             self.x_array.sort()
             for ele in self.x_array:                
                 list_y_modelise.append(a*float(ele) + b)
@@ -377,11 +371,11 @@ class Polynome(QMainWindow, Ui_Polynome):
         list_incertitude = []
         
         for i in range(nbr_ligne):
-            list_ordre_apparition.append(int(self.tableWidget_table_etalonnage.item(i, 0).text()))
-            list_etalon_corrige.append(float(self.tableWidget_table_etalonnage.item(i, 1).text()))
-            list_Tlue.append(float(self.tableWidget_table_etalonnage.item(i, 2).text()))
-            list_correction.append(float(self.tableWidget_table_etalonnage.item(i, 3).text()))
-            list_incertitude.append(float(self.tableWidget_table_etalonnage.item(i, 5).text()))
+            list_ordre_apparition.append(int(self.tableWidget_table_etalonnage.item(i, 0).text().replace(",", ".")))
+            list_etalon_corrige.append(float(self.tableWidget_table_etalonnage.item(i, 1).text().replace(",", ".")))
+            list_Tlue.append(float(self.tableWidget_table_etalonnage.item(i, 2).text().replace(",", ".")))
+            list_correction.append(float(self.tableWidget_table_etalonnage.item(i, 3).text().replace(",", ".")))
+            list_incertitude.append(float(self.tableWidget_table_etalonnage.item(i, 5).text().replace(",", ".")))
             
         nbr_poly = self.tableWidget_polynome.rowCount()        
         ordre = int(self.tableWidget_polynome.item(nbr_poly-1,0 ).text())
@@ -392,9 +386,9 @@ class Polynome(QMainWindow, Ui_Polynome):
         recouvrement = []
         
         if ordre > 1:
-            a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text())
-            b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text())
-            c = float(self.tableWidget_polynome.item(nbr_poly-1,3 ).text())
+            a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text().replace(",", "."))
+            b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text().replace(",", "."))
+            c = float(self.tableWidget_polynome.item(nbr_poly-1,3 ).text().replace(",", "."))
             
             i=0
             for ele in list_Tlue:
@@ -408,8 +402,8 @@ class Polynome(QMainWindow, Ui_Polynome):
                 i+=1
                 
         else:
-            a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text())
-            b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text())
+            a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text().replace(",", "."))
+            b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text().replace(",", "."))
             
             i=0
             for ele in list_Tlue:                
@@ -558,16 +552,16 @@ class Polynome(QMainWindow, Ui_Polynome):
             booleen = False        
        
         nbr_poly = self.tableWidget_polynome.rowCount()        
-        ordre = int(self.tableWidget_polynome.item(nbr_poly-1,0 ).text())        
+        ordre = int(self.tableWidget_polynome.item(nbr_poly-1,0 ).text().replace(",", "."))        
           
         if ordre > 1:
-            a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text())
-            b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text())
-            c = float(self.tableWidget_polynome.item(nbr_poly-1,3 ).text())
+            a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text().replace(",", "."))
+            b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text().replace(",", "."))
+            c = float(self.tableWidget_polynome.item(nbr_poly-1,3 ).text().replace(",", "."))
                 
         else:
-            a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text())
-            b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text())
+            a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text().replace(",", "."))
+            b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text().replace(",", "."))
             c = 0
 
         date = self.dateEdit.date()
@@ -597,12 +591,12 @@ class Polynome(QMainWindow, Ui_Polynome):
             for i in range (nbr_ligne_tableau_etal):
                 ligne_saisie = {}
     
-                ligne_saisie["ORDRE_APPARITION"] = self.tableWidget_table_etalonnage.item(i, 0).text()
-                ligne_saisie["MOYENNE_ETALON_CORRI"] = self.tableWidget_table_etalonnage.item(i, 1).text()
-                ligne_saisie["MOYENNE_INSTRUM"] = self.tableWidget_table_etalonnage.item(i, 2).text()
-                ligne_saisie["CORRECTION"] = self.tableWidget_table_etalonnage.item(i, 3).text()
-                ligne_saisie["ERREUR"] = self.tableWidget_table_etalonnage.item(i, 4).text()
-                ligne_saisie["INCERTITUDE"] = self.tableWidget_table_etalonnage.item(i, 5).text()
+                ligne_saisie["ORDRE_APPARITION"] = self.tableWidget_table_etalonnage.item(i, 0).text().replace(",", ".")
+                ligne_saisie["MOYENNE_ETALON_CORRI"] = self.tableWidget_table_etalonnage.item(i, 1).text().replace(",", ".")
+                ligne_saisie["MOYENNE_INSTRUM"] = self.tableWidget_table_etalonnage.item(i, 2).text().replace(",", ".")
+                ligne_saisie["CORRECTION"] = self.tableWidget_table_etalonnage.item(i, 3).text().replace(",", ".")
+                ligne_saisie["ERREUR"] = self.tableWidget_table_etalonnage.item(i, 4).text().replace(",", ".")
+                ligne_saisie["INCERTITUDE"] = self.tableWidget_table_etalonnage.item(i, 5).text().replace(",", ".")
                 ligne_saisie["ID_POLYNOME"] = id_poly
                 saisie_tableau_etal.append(ligne_saisie)
 
@@ -616,12 +610,12 @@ class Polynome(QMainWindow, Ui_Polynome):
             for i in range (nbr_ligne_tableau_etal):
                 ligne_saisie = {}
     
-                ligne_saisie["ORDRE_APPARITION"] = self.tableWidget_table_etalonnage.item(i, 0).text()
-                ligne_saisie["MOYENNE_ETALON_CORRI"] = self.tableWidget_table_etalonnage.item(i, 1).text()
-                ligne_saisie["MOYENNE_INSTRUM"] = self.tableWidget_table_etalonnage.item(i, 2).text()
-                ligne_saisie["CORRECTION"] = self.tableWidget_table_etalonnage.item(i, 3).text()
-                ligne_saisie["ERREUR"] = self.tableWidget_table_etalonnage.item(i, 4).text()
-                ligne_saisie["INCERTITUDE"] = self.tableWidget_table_etalonnage.item(i, 5).text()
+                ligne_saisie["ORDRE_APPARITION"] = self.tableWidget_table_etalonnage.item(i, 0).text().replace(",", ".")
+                ligne_saisie["MOYENNE_ETALON_CORRI"] = self.tableWidget_table_etalonnage.item(i, 1).text().replace(",", ".")
+                ligne_saisie["MOYENNE_INSTRUM"] = self.tableWidget_table_etalonnage.item(i, 2).text().replace(",", ".")
+                ligne_saisie["CORRECTION"] = self.tableWidget_table_etalonnage.item(i, 3).text().replace(",", ".")
+                ligne_saisie["ERREUR"] = self.tableWidget_table_etalonnage.item(i, 4).text().replace(",", ".")
+                ligne_saisie["INCERTITUDE"] = self.tableWidget_table_etalonnage.item(i, 5).text().replace(",", ".")
                 ligne_saisie["ID_POLYNOME"] = id_poly
                 saisie_tableau_etal.append(ligne_saisie)
 
@@ -650,15 +644,15 @@ class Polynome(QMainWindow, Ui_Polynome):
         
        
         nbr_poly = self.tableWidget_polynome.rowCount()        
-        ordre = int(self.tableWidget_polynome.item(nbr_poly-1,0 ).text())        
+        ordre = int(self.tableWidget_polynome.item(nbr_poly-1,0 ).text().replace(",", "."))        
           
         if ordre > 1:
-            a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text())
-            b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text())
-            c = float(self.tableWidget_polynome.item(nbr_poly-1,3 ).text())                
+            a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text().replace(",", "."))
+            b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text().replace(",", "."))
+            c = float(self.tableWidget_polynome.item(nbr_poly-1,3 ).text().replace(",", "."))                
         else:
-            a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text())
-            b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text())
+            a = float(self.tableWidget_polynome.item(nbr_poly-1,1 ).text().replace(",", "."))
+            b = float(self.tableWidget_polynome.item(nbr_poly-1,2 ).text().replace(",", "."))
             c = 0
 
         date = self.dateEdit.date()
@@ -678,12 +672,12 @@ class Polynome(QMainWindow, Ui_Polynome):
         for i in range (nbr_ligne_tableau_etal):
             ligne_saisie = {}
 
-            ligne_saisie["ORDRE_APPARITION"] = self.tableWidget_table_etalonnage.item(i, 0).text()
-            ligne_saisie["MOYENNE_ETALON_CORRI"] = self.tableWidget_table_etalonnage.item(i, 1).text()
-            ligne_saisie["MOYENNE_INSTRUM"] = self.tableWidget_table_etalonnage.item(i, 2).text()
-            ligne_saisie["CORRECTION"] = self.tableWidget_table_etalonnage.item(i, 3).text()
-            ligne_saisie["ERREUR"] = self.tableWidget_table_etalonnage.item(i, 4).text()
-            ligne_saisie["INCERTITUDE"] = self.tableWidget_table_etalonnage.item(i, 5).text()
+            ligne_saisie["ORDRE_APPARITION"] = self.tableWidget_table_etalonnage.item(i, 0).text().replace(",", ".")
+            ligne_saisie["MOYENNE_ETALON_CORRI"] = self.tableWidget_table_etalonnage.item(i, 1).text().replace(",", ".")
+            ligne_saisie["MOYENNE_INSTRUM"] = self.tableWidget_table_etalonnage.item(i, 2).text().replace(",", ".")
+            ligne_saisie["CORRECTION"] = self.tableWidget_table_etalonnage.item(i, 3).text().replace(",", ".")
+            ligne_saisie["ERREUR"] = self.tableWidget_table_etalonnage.item(i, 4).text().replace(",", ".")
+            ligne_saisie["INCERTITUDE"] = self.tableWidget_table_etalonnage.item(i, 5).text().replace(",", ".")
             ligne_saisie["ID_POLYNOME"] = id_inserre[0]
             saisie_tableau_etal.append(ligne_saisie)
 
