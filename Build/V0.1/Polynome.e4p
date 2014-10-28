@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project Polynome -->
-<!-- Saved: 2014-10-28, 11:42:24 -->
+<!-- Saved: 2014-10-28, 16:51:44 -->
 <!-- Copyright (C) 2014 F.Cariou,  -->
 <Project version="5.1">
   <Language>en_US</Language>
@@ -62,6 +62,14 @@
         <value>
           <dict>
             <key>
+              <string>additionalFiles</string>
+            </key>
+            <value>
+              <list>
+                <string>C:\Python33\Lib\site-packages\psycopg2</string>
+              </list>
+            </value>
+            <key>
               <string>applicationIcon</string>
             </key>
             <value>
@@ -74,10 +82,31 @@
               <string>Win32GUI</string>
             </value>
             <key>
+              <string>includeModules</string>
+            </key>
+            <value>
+              <list>
+                <string>sqlalchemy.databases</string>
+                <string>scipy</string>
+                <string>scipy.special</string>
+                <string>numpy</string>
+                <string>scipy.special._ufuncs_cxx</string>
+                <string>scipy.sparse.csgraph._validation</string>
+                <string>scipy.integrate.vode</string>
+                <string>scipy.integrate.lsoda</string>
+              </list>
+            </value>
+            <key>
               <string>initScript</string>
             </key>
             <value>
               <string>Console3</string>
+            </value>
+            <key>
+              <string>optimize</string>
+            </key>
+            <value>
+              <int>1</int>
             </value>
             <key>
               <string>script</string>
