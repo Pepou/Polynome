@@ -9,7 +9,7 @@ class AccesBdd():
     
     def __init__(self, login, password):
         self.namebdd = "Labo_Metro_Test"#"Labo_Metro_Prod"
-        self.adressebdd = "localhost" # "10.42.1.74"   #"localhost"            
+        self.adressebdd = "10.42.1.74"#"localhost" #    #"localhost"            
         self.portbdd = "5432"
         self.login = login
         self.password = password

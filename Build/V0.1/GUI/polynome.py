@@ -15,6 +15,7 @@ from .Ui_polynome import Ui_Polynome
 import numpy as np
 import scipy.stats as sp
 
+
 from PyQt4.Qwt5 import *
 from PyQt4.Qwt5.qplt import *
 import PyQt4.Qwt5.iqt
