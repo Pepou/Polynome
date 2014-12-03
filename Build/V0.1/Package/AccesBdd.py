@@ -118,7 +118,7 @@ class AccesBdd():
             reference_constructeur
             n_serie'''
         
-        result = self.connection.execute("""SELECT "CONSTRUCTEUR","REFERENCE_CONSTRUCTEUR","N_SERIE" FROM "INSTRUMENTS" WHERE "IDENTIFICATION" ='{}'""".format(identification_instrument))
+        result = self.connection.execute("""SELECT "CONSTRUCTEUR","REFERENCE_CONSTRUCTEUR","N_SERIE","RESOLUTION" FROM "INSTRUMENTS" WHERE "IDENTIFICATION" ='{}'""".format(identification_instrument))
         
         
         for ele in result:

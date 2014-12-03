@@ -134,7 +134,8 @@ class Polynome(QMainWindow, Ui_Polynome):
         self.textEdit_n_serie.append(caracteristique_instrument[2])
             #REFERENCE_CONSTRUCTEUR
         self.textEdit_model.append(caracteristique_instrument[1])            
-        
+            #resoluion
+        self.lineEdit_resolution.setText(str(caracteristique_instrument[3]))
         
         
         if self.radioButton_modification.isChecked():            
@@ -359,7 +360,7 @@ class Polynome(QMainWindow, Ui_Polynome):
         '''fct qui gere le tableau de modelisation'''        
         
         nbr_ligne_tableau_modelisation = int(self.tableWidget_modelisation.rowCount())
-             
+        resolution = self.lineEdit_resolution.text()
         if nbr_ligne_tableau_modelisation != 0:
             for i in range(nbr_ligne_tableau_modelisation):
                 self.tableWidget_modelisation.removeRow(0)
@@ -398,7 +399,10 @@ class Polynome(QMainWindow, Ui_Polynome):
                 correction_modelisee.append(a*ele*ele + b*ele + c)
                 residu.append(list_correction[i]-correction_modelisee[i])
                 
-                if list_incertitude[i]- np.abs(residu[i]) >= 0:
+                a = str(resolution.replace(",", "."))
+                b = str(list_incertitude[i])
+                valeur_U_arrondie = decimal.Decimal(b).quantize(decimal.Decimal(a), rounding=decimal.ROUND_UP)
+                if valeur_U_arrondie - np.abs(residu[i]) >= 0:
                     recouvrement.append("Ok")
                 else:
                     recouvrement.append("Nok")

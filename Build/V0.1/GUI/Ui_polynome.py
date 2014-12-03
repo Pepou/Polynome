@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Travail\EFS\Travail accreditation\SQ\Developpement Informatique\Polynome\Build\V0.1\GUI\polynome.ui'
 #
-# Created: Wed Oct  8 17:58:19 2014
+# Created: Wed Dec  3 16:19:00 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -167,12 +167,22 @@ class Ui_Polynome(object):
         self.label_16.setSizePolicy(sizePolicy)
         self.label_16.setMaximumSize(QtCore.QSize(16777215, 30))
         self.label_16.setObjectName(_fromUtf8("label_16"))
-        self.formLayout.setWidget(6, QtGui.QFormLayout.LabelRole, self.label_16)
+        self.formLayout.setWidget(7, QtGui.QFormLayout.LabelRole, self.label_16)
         self.comboBox_etat_polynome = QtGui.QComboBox(self.layoutWidget)
         self.comboBox_etat_polynome.setObjectName(_fromUtf8("comboBox_etat_polynome"))
         self.comboBox_etat_polynome.addItem(_fromUtf8(""))
         self.comboBox_etat_polynome.addItem(_fromUtf8(""))
-        self.formLayout.setWidget(6, QtGui.QFormLayout.FieldRole, self.comboBox_etat_polynome)
+        self.formLayout.setWidget(7, QtGui.QFormLayout.FieldRole, self.comboBox_etat_polynome)
+        self.lineEdit_resolution = QtGui.QLineEdit(self.layoutWidget)
+        self.lineEdit_resolution.setObjectName(_fromUtf8("lineEdit_resolution"))
+        self.formLayout.setWidget(6, QtGui.QFormLayout.FieldRole, self.lineEdit_resolution)
+        self.label_6 = QtGui.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Calibri"))
+        font.setPointSize(12)
+        self.label_6.setFont(font)
+        self.label_6.setObjectName(_fromUtf8("label_6"))
+        self.formLayout.setWidget(6, QtGui.QFormLayout.LabelRole, self.label_6)
         self.verticalLayout.addWidget(self.splitter_2)
         self.splitter_3 = QtGui.QSplitter(self.tab_1)
         self.splitter_3.setFrameShape(QtGui.QFrame.Panel)
@@ -433,6 +443,7 @@ class Ui_Polynome(object):
         self.label_16.setText(_translate("Polynome", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Etat Polynome</span></p></body></html>", None))
         self.comboBox_etat_polynome.setItemText(0, _translate("Polynome", "Archivé", None))
         self.comboBox_etat_polynome.setItemText(1, _translate("Polynome", "Actif", None))
+        self.label_6.setText(_translate("Polynome", "Resolution", None))
         self.label_5.setText(_translate("Polynome", "<html><head/><body><p><span style=\" font-size:12pt; text-decoration: underline;\">Information Etalonnage</span></p></body></html>", None))
         item = self.tableWidget_table_etalonnage.horizontalHeaderItem(0)
         item.setText(_translate("Polynome", "Ordre d\'apparition certificat", None))
