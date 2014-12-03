@@ -115,8 +115,10 @@ class Polynome(QMainWindow, Ui_Polynome):
         fct qui en fct du current item va chcher les n° ce de l'intrument et l'affiche combobox n°CE
         Recupere et affiche caracteristique instrument
         """
-        #nettoyage 
-        self.comboBox_n_ce.clear()
+        #nettoyage
+        self.clear_all()
+        self.comboBox_n_ce.clear()        
+        self.clear_plot()    
         self.textEdit_constructeur.clear()
         self.textEdit_model.clear()
         self.textEdit_n_serie.clear()
@@ -479,7 +481,8 @@ class Polynome(QMainWindow, Ui_Polynome):
         nbr_ligne_tableau_poly= int(self.tableWidget_polynome.rowCount())
         if nbr_ligne_tableau_poly !=1: #:reste une ligne juste nettoyer les cases
             for i in range(nbr_ligne_tableau_poly):
-                self.tableWidget_polynome.removeRow(0)
+                self.tableWidget_polynome.removeRow(1)
+            self.tableWidget_polynome.clearContents()
         else:
             self.tableWidget_polynome.clearContents()
             
