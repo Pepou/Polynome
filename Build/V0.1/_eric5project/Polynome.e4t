@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-5.1.dtd">
 <!-- eric5 tasks file for project Polynome -->
-<!-- Saved: 2014-12-03, 16:29:57 -->
+<!-- Saved: 2014-12-03, 16:57:03 -->
 <Tasks version="5.1">
   <ProjectScanFilter></ProjectScanFilter>
   <Task priority="1" completed="False" type="1">
@@ -16,7 +16,7 @@
   <Task priority="1" completed="False" type="1">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-12-03, 16:29:54</Created>
+    <Created>2014-12-03, 16:57:00</Created>
     <Resource>
       <Filename>GUI/polynome.py</Filename>
       <Linenumber>82</Linenumber>
@@ -25,10 +25,10 @@
   <Task priority="1" completed="False" type="1">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-12-03, 16:29:54</Created>
+    <Created>2014-12-03, 16:57:00</Created>
     <Resource>
       <Filename>GUI/polynome.py</Filename>
-      <Linenumber>542</Linenumber>
+      <Linenumber>556</Linenumber>
     </Resource>
   </Task>
 </Tasks>

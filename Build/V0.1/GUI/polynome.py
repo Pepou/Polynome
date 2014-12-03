@@ -14,7 +14,7 @@ from .Ui_polynome import Ui_Polynome
 
 import numpy as np
 import scipy.stats as sp
-
+import decimal
 
 from PyQt4.Qwt5 import *
 from PyQt4.Qwt5.qplt import *
@@ -234,6 +234,11 @@ class Polynome(QMainWindow, Ui_Polynome):
         ligne_selectionnee = self.tableWidget_table_etalonnage.selectionModel().currentIndex().row()
         self.tableWidget_table_etalonnage.removeRow(ligne_selectionnee)
         
+        if self.radioButton_modification.isChecked():
+            self.actionMise_jour.setEnabled(False)
+        else:
+            self.actionEnregistrer.setEnabled(False)
+        
 #        new_poly = self.calcul_polynome()
 #        self.courbe_polynome()
    
@@ -244,8 +249,13 @@ class Polynome(QMainWindow, Ui_Polynome):
         """
         
         ligne_selectionnee = self.tableWidget_table_etalonnage.selectionModel().currentIndex().row()
-        self.tableWidget_table_etalonnage.insertRow((ligne_selectionnee+1))        
+        self.tableWidget_table_etalonnage.insertRow((ligne_selectionnee+1))
         
+        if self.radioButton_modification.isChecked():
+            self.actionMise_jour.setEnabled(False)
+        else:
+            self.actionEnregistrer.setEnabled(False)
+            
     def calcul_polynome(self):
         '''Fonction qui calcul un polynome depuis le tableau:
         x et y doivent etre des lists et ordre un entier'''
@@ -399,13 +409,13 @@ class Polynome(QMainWindow, Ui_Polynome):
                 correction_modelisee.append(a*ele*ele + b*ele + c)
                 residu.append(list_correction[i]-correction_modelisee[i])
                 
-                a = str(resolution.replace(",", "."))
-                b = str(list_incertitude[i])
-                valeur_U_arrondie = decimal.Decimal(b).quantize(decimal.Decimal(a), rounding=decimal.ROUND_UP)
-                if valeur_U_arrondie - np.abs(residu[i]) >= 0:
-                    recouvrement.append("Ok")
+                resolution_str = str(resolution.replace(",", "."))
+                incertitude_str = str(list_incertitude[i])
+                valeur_U_arrondie = decimal.Decimal(incertitude_str).quantize(decimal.Decimal(resolution_str), rounding=decimal.ROUND_UP)
+                if float(valeur_U_arrondie) - np.abs(residu[i]) >= 0:
+                    recouvrement.append("Conforme")
                 else:
-                    recouvrement.append("Nok")
+                    recouvrement.append("Non Conforme")
                 i+=1
                 
         else:
@@ -417,7 +427,11 @@ class Polynome(QMainWindow, Ui_Polynome):
                 correction_modelisee.append(a*float(ele) + b)
                 residu.append(list_correction[i]-correction_modelisee[i])
                 
-                if list_incertitude[i]- np.abs(residu[i]) >= 0:
+                resolution_str = str(resolution.replace(",", "."))
+                incertitude_str = str(list_incertitude[i])
+                valeur_U_arrondie = decimal.Decimal(incertitude_str).quantize(decimal.Decimal(resolution_str), rounding=decimal.ROUND_UP)
+                
+                if float(valeur_U_arrondie) - np.abs(residu[i]) >= 0:                
                     recouvrement.append("Conforme")
                 else:
                     recouvrement.append("Non Conforme")
@@ -544,6 +558,11 @@ class Polynome(QMainWindow, Ui_Polynome):
         new_poly = self.calcul_polynome()
         self.courbe_polynome()
         self.gestion_tableWidget_modelisation()
+        
+        if self.radioButton_modification.isChecked():
+            self.actionMise_jour.setEnabled(True)
+        else:
+            self.actionEnregistrer.setEnabled(True)
     
     @pyqtSlot()
     def on_actionMise_jour_triggered(self):
