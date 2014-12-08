@@ -36,6 +36,9 @@ class Polynome(QMainWindow, Ui_Polynome):
         
         self.db = AccesBdd(login, password)
         
+        self.actionEnregistrer.setEnabled(False)
+        self.actionMise_jour.setEnabled(False)
+        
         #configuration largeur colonnes tablewidget
         self.tableWidget_table_etalonnage.setColumnWidth(0,200)
         self.tableWidget_table_etalonnage.setColumnWidth(1,200)
