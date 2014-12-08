@@ -85,7 +85,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Modification</string>
+             <string>Modification/Consultation</string>
             </property>
            </widget>
           </widget>
@@ -606,8 +606,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>1102</width>
-             <height>655</height>
+             <width>775</width>
+             <height>558</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_4">
