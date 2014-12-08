@@ -83,8 +83,8 @@ class Polynome(QMainWindow, Ui_Polynome):
         nettoie combobox n° CE
         """
         # TODO: not implemented yet
-        self.actionEnregistrer.setEnabled(False)
-        self.actionMise_jour.setEnabled(True)
+#        self.actionEnregistrer.setEnabled(False)
+#        self.actionMise_jour.setEnabled(True)
         
         self.comboBox_identification.clear()
         self.comboBox_n_ce.clear()
@@ -100,8 +100,8 @@ class Polynome(QMainWindow, Ui_Polynome):
         """
         Slot documentation goes here.
         """
-        self.actionEnregistrer.setEnabled(True)
-        self.actionMise_jour.setEnabled(False)
+#        self.actionEnregistrer.setEnabled(True)
+#        self.actionMise_jour.setEnabled(False)
         
         self.comboBox_identification.clear()
         self.comboBox_n_ce.clear()
