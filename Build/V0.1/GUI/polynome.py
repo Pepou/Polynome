@@ -137,8 +137,14 @@ class Polynome(QMainWindow, Ui_Polynome):
         self.textEdit_n_serie.append(caracteristique_instrument[2])
             #REFERENCE_CONSTRUCTEUR
         self.textEdit_model.append(caracteristique_instrument[1])            
-            #resoluion
-        self.lineEdit_resolution.setText(str(caracteristique_instrument[3]))
+            #resolution
+        resolution_instrum = str(caracteristique_instrument[3])
+                #mise en forme resolution
+        i = len(resolution_instrum) - 1 #cles indices commencent  à 0        
+        while resolution_instrum[i - 1] == "0" or resolution_instrum[i - 1] == ".":
+            i-=1
+        
+        self.lineEdit_resolution.setText(resolution_instrum[:i])
         
         
         if self.radioButton_modification.isChecked():            
