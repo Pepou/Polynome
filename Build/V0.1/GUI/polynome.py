@@ -83,8 +83,8 @@ class Polynome(QMainWindow, Ui_Polynome):
         nettoie combobox n° CE
         """
         # TODO: not implemented yet
-#        self.actionEnregistrer.setEnabled(False)
-#        self.actionMise_jour.setEnabled(True)
+        self.actionEnregistrer.setEnabled(False)
+        self.actionMise_jour.setEnabled(False)
         
         self.comboBox_identification.clear()
         self.comboBox_n_ce.clear()
@@ -100,8 +100,8 @@ class Polynome(QMainWindow, Ui_Polynome):
         """
         Slot documentation goes here.
         """
-#        self.actionEnregistrer.setEnabled(True)
-#        self.actionMise_jour.setEnabled(False)
+        self.actionEnregistrer.setEnabled(False)
+        self.actionMise_jour.setEnabled(False)
         
         self.comboBox_identification.clear()
         self.comboBox_n_ce.clear()
@@ -283,6 +283,7 @@ class Polynome(QMainWindow, Ui_Polynome):
         
         poly = np.polyfit(list_Tlue, list_correction, ordre[0])
         
+               
         nbr_ligne_poly = self.tableWidget_polynome.rowCount()
         test_case_vide_coef_a =  self.tableWidget_polynome.item(0, 2)
        
@@ -290,14 +291,25 @@ class Polynome(QMainWindow, Ui_Polynome):
             self.tableWidget_polynome.insertRow(nbr_ligne_poly)        
             
             if ordre[0] == 1:
+                #arrondissage polynome en 1.10-12:
+                resolution = str(0.000000000001)
+                coeff_a = decimal.Decimal(str(poly[0])).quantize(decimal.Decimal(resolution), rounding=decimal.ROUND_HALF_EVEN)
+                coeff_b = decimal.Decimal(str(poly[1])).quantize(decimal.Decimal(resolution), rounding=decimal.ROUND_HALF_EVEN)
+                
                 self.tableWidget_polynome.setItem(nbr_ligne_poly, 0, QtGui.QTableWidgetItem(str(ordre[0])))
-                self.tableWidget_polynome.setItem(nbr_ligne_poly, 1, QtGui.QTableWidgetItem(str(poly[0])))
-                self.tableWidget_polynome.setItem(nbr_ligne_poly, 2, QtGui.QTableWidgetItem(str(poly[1])))
+                self.tableWidget_polynome.setItem(nbr_ligne_poly, 1, QtGui.QTableWidgetItem(str(coeff_a)))
+                self.tableWidget_polynome.setItem(nbr_ligne_poly, 2, QtGui.QTableWidgetItem(str(coeff_b)))
             else:
+                #arrondissage polynome en 1.10-12:
+                resolution = str(0.000000000001)
+                coeff_a = decimal.Decimal(str(poly[0])).quantize(decimal.Decimal(resolution), rounding=decimal.ROUND_HALF_EVEN)
+                coeff_b = decimal.Decimal(str(poly[1])).quantize(decimal.Decimal(resolution), rounding=decimal.ROUND_HALF_EVEN)
+                coeff_c = decimal.Decimal(str(poly[2])).quantize(decimal.Decimal(resolution), rounding=decimal.ROUND_HALF_EVEN)
+                print("coeff a {}".format(coeff_a))
                 self.tableWidget_polynome.setItem(nbr_ligne_poly, 0, QtGui.QTableWidgetItem(str(ordre[0])))
-                self.tableWidget_polynome.setItem(nbr_ligne_poly, 1, QtGui.QTableWidgetItem(str(poly[0])))
-                self.tableWidget_polynome.setItem(nbr_ligne_poly, 2, QtGui.QTableWidgetItem(str(poly[1])))
-                self.tableWidget_polynome.setItem(nbr_ligne_poly, 3, QtGui.QTableWidgetItem(str(poly[2])))
+                self.tableWidget_polynome.setItem(nbr_ligne_poly, 1, QtGui.QTableWidgetItem(str(coeff_a)))
+                self.tableWidget_polynome.setItem(nbr_ligne_poly, 2, QtGui.QTableWidgetItem(str(coeff_b)))
+                self.tableWidget_polynome.setItem(nbr_ligne_poly, 3, QtGui.QTableWidgetItem(str(coeff_c)))
             
             item = QtGui.QTableWidgetItem()
             self.tableWidget_polynome.setVerticalHeaderItem(nbr_ligne_poly, item)

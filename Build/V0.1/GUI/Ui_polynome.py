@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Travail\EFS\Travail accreditation\SQ\Developpement Informatique\Polynome\Build\V0.1\GUI\polynome.ui'
 #
-# Created: Wed Dec  3 16:19:00 2014
+# Created: Mon Dec  8 16:45:29 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -278,7 +278,7 @@ class Ui_Polynome(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
         self.scrollAreaWidgetContents = QtGui.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1102, 655))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 775, 558))
         self.scrollAreaWidgetContents.setObjectName(_fromUtf8("scrollAreaWidgetContents"))
         self.gridLayout_4 = QtGui.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_4.setObjectName(_fromUtf8("gridLayout_4"))
@@ -432,7 +432,7 @@ class Ui_Polynome(object):
         Polynome.setWindowTitle(_translate("Polynome", "Polynome de modelisation v 0.1", None))
         self.groupBox.setTitle(_translate("Polynome", "Selection operation ", None))
         self.radioButton_new_saisie.setText(_translate("Polynome", "Nouvelle Saisie", None))
-        self.radioButton_modification.setText(_translate("Polynome", "Modification", None))
+        self.radioButton_modification.setText(_translate("Polynome", "Modification/Consultation", None))
         self.label_10.setText(_translate("Polynome", "<html><head/><body><p><span style=\" font-size:12pt; text-decoration: underline;\">Instrument à modeliser</span></p></body></html>", None))
         self.label_11.setText(_translate("Polynome", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Identification Instrument</span></p></body></html>", None))
         self.label_15.setText(_translate("Polynome", "<html><head/><body><p><span style=\" font-size:11pt;\">N°Certificat</span></p></body></html>", None))
@@ -443,7 +443,7 @@ class Ui_Polynome(object):
         self.label_16.setText(_translate("Polynome", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Etat Polynome</span></p></body></html>", None))
         self.comboBox_etat_polynome.setItemText(0, _translate("Polynome", "Archivé", None))
         self.comboBox_etat_polynome.setItemText(1, _translate("Polynome", "Actif", None))
-        self.label_6.setText(_translate("Polynome", "Resolution", None))
+        self.label_6.setText(_translate("Polynome", "<html><head/><body><p align=\"center\">Resolution</p></body></html>", None))
         self.label_5.setText(_translate("Polynome", "<html><head/><body><p><span style=\" font-size:12pt; text-decoration: underline;\">Information Etalonnage</span></p></body></html>", None))
         item = self.tableWidget_table_etalonnage.horizontalHeaderItem(0)
         item.setText(_translate("Polynome", "Ordre d\'apparition certificat", None))
