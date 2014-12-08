@@ -305,7 +305,7 @@ class Polynome(QMainWindow, Ui_Polynome):
                 coeff_a = decimal.Decimal(str(poly[0])).quantize(decimal.Decimal(resolution), rounding=decimal.ROUND_HALF_EVEN)
                 coeff_b = decimal.Decimal(str(poly[1])).quantize(decimal.Decimal(resolution), rounding=decimal.ROUND_HALF_EVEN)
                 coeff_c = decimal.Decimal(str(poly[2])).quantize(decimal.Decimal(resolution), rounding=decimal.ROUND_HALF_EVEN)
-                print("coeff a {}".format(coeff_a))
+                
                 self.tableWidget_polynome.setItem(nbr_ligne_poly, 0, QtGui.QTableWidgetItem(str(ordre[0])))
                 self.tableWidget_polynome.setItem(nbr_ligne_poly, 1, QtGui.QTableWidgetItem(str(coeff_a)))
                 self.tableWidget_polynome.setItem(nbr_ligne_poly, 2, QtGui.QTableWidgetItem(str(coeff_b)))
