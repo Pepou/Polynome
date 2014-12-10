@@ -8,8 +8,8 @@ class AccesBdd():
     '''class gerant la bdd'''
     
     def __init__(self, login, password):
-        self.namebdd = "Labo_Metro_Test"#"Labo_Metro_Prod"
-        self.adressebdd = "10.42.1.74"#"localhost" #    #"localhost"            
+        self.namebdd = "Labo_Metro_Prod"
+        self.adressebdd = "10.42.1.74"          
         self.portbdd = "5432"
         self.login = login
         self.password = password

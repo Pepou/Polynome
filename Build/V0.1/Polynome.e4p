@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project Polynome -->
-<!-- Saved: 2014-10-28, 16:51:44 -->
+<!-- Saved: 2014-12-10, 15:11:50 -->
 <!-- Copyright (C) 2014 F.Cariou,  -->
 <Project version="5.1">
   <Language>en_US</Language>
@@ -62,14 +62,6 @@
         <value>
           <dict>
             <key>
-              <string>additionalFiles</string>
-            </key>
-            <value>
-              <list>
-                <string>C:\Python33\Lib\site-packages\psycopg2</string>
-              </list>
-            </value>
-            <key>
               <string>applicationIcon</string>
             </key>
             <value>
@@ -124,7 +116,7 @@
               <string>targetName</string>
             </key>
             <value>
-              <string>Polynome v0.1.exe</string>
+              <string>Polynome v1.0.exe</string>
             </value>
           </dict>
         </value>
